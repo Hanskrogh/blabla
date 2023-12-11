@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>WEATHER WARDROBE</title>
+	<meta charset="utf-8">
+	<link href="../CSS/style.css" type="text/css" rel="stylesheet">
+	<script src="../JS/script.js"></script>
+
+
+</head>
+<body>
+	<header>
+  		<h1>🌤WEATHER WARDROBE🌤<h1>
+	</header>
+	<img id="frame" hidden = true>
+    <div id="weather-info" class="weather-info">
+    
+   
+<label for="city">Where do you want to see the weather:</label>
+    <input type="text" id="city" placeholder="Your city">
+    <button onclick="getWeather()">Get weather</button>
+
+    <script>
+      async function getWeather() {
+        const apiKey = '86356df12d4d962bf277fb6c08bf6ce3'; 
+        const city = document.getElementById('city').value;
+
+        const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+
+        try {
+          const response = await fetch(apiUrl);
+          const data = await response.json();
+
+          let temp = Math.round(parseInt(data.main.temp))
+          let feels = Math.round(parseInt(data.main.feels_like))
+
+          const weatherInfo = document.getElementById('weather-info');
+          weatherInfo.innerHTML = `
+            <h2>Weather in ${city}</h2>
+            <p>Temperature: ${temp}°C</p>
+            <p>Feels like: ${feels}°C</p>
+            <p>Weather: ${data.weather[0].description}</p>`;
+
+        
+       		
+  			let image = document.getElementById("frame")
+        let vejr = data.weather[0].main
+
+         	if (temp >= 25 && vejr == "Clear") {
+         		image.hidden = false
+  				image.src = "../Wardrobe/25+/sol25+.png"
+  			} if (temp >= 25 && (vejr == "Clouds" || vejr == "Atomsphere")){
+  				image.hidden = false
+  				image.src = "../Wardrobe/25+/normal25+.png"
+  			} if (temp >= 25 && (vejr == "Rain" || vejr == "Drizzle" || vejr == "Snow" || vejr == "Thunderstorm")){
+  				image.hidden = false
+				  image.src = "../Wardrobe/25+/regn25+.png"
+
+
+  			} if (25 > temp && temp >= 20 && vejr == "Clear"){
+  				image.hidden = false
+  				image.src = "../Wardrobe/2025/sol2025.png"
+  			} if (25 > temp && temp >= 20 && (vejr == "Clouds" || vejr == "Atmosphere")){
+  				image.hidden = false
+  				image.src = "../Wardrobe/2025/normal2025.png"
+  			} if (25 > temp && temp >= 20 && (vejr == "Rain" || vejr == "Drizzle" || vejr == "Snow" || vejr == "Thunderstorm")){
+  				image.hidden = false
+  				image.src = "../Wardrobe/2025/regn2025.png"
+  			
+
+  			} if (20 > temp && temp >= 15 && vejr =="Clear"){
+  				image.hidden = false
+  				image.src = "../Wardrobe/1520/sol1520.png"
+  			} if (20 > temp && temp >= 15 && (vejr == "Clouds" || vejr == "Atmosphere")){
+  				image.hidden = false
+  				image.src = "../Wardrobe/1520/normal1520.png" 
+  			} if (20 > temp && temp >= 15 && (vejr == "Rain" || vejr == "Drizzle" || vejr == "Snow" || vejr == "Thunderstorm")){
+  				image.hidden = false
+  				image.src = "../Wardrobe/1520/regn1520.png" 
+  			
+
+  			} if (15 > temp && temp >= 10 && vejr == "Clear"){
+  				image.hidden = false
+  				image.src = "../Wardrobe/1015/sol1015.png" 
+  			} if (15 > temp && temp >= 10 && (vejr == "Clouds" || vejr == "Atmosphere")){
+  				image.hidden = false
+  				image.src = "../Wardrobe/1015/normal1015.png" 
+  			} if (15 > temp && temp >= 10 && (vejr == "Rain" || vejr == "Drizzle" || vejr == "Snow" || vejr == "Thunderstorm")){
+  				image.hidden = false
+  				image.src = "../Wardrobe/1015/regn1015.png" 
+  			
+
+  			} if (10 > temp && temp >= 5 && vejr == "Clear"){
+  				image.hidden = false
+  				image.src = "../Wardrobe/510/sol510.png" 
+  			} if (10 > temp && temp >= 5 && (vejr == "Clouds" || vejr == "Atmosphere")){
+  				image.hidden = false
+  				image.src = "../Wardrobe/510/normal510.png" 
+  			} if (10 > temp && temp >= 5 && (vejr == "Rain" || vejr == "Drizzle" || vejr == "Snow" || vejr == "Thunderstorm")){
+  				image.hidden = false
+  				image.src = "../Wardrobe/510/regn510.png" 
+  			
+
+  			} if (5 > temp && temp >= 0 && vejr == "Clear"){
+  				image.hidden = false
+  				image.src = "../Wardrobe/05/sol05.png" 
+  			} if (5 > temp && temp >= 0 && (vejr == "Clouds" || vejr == "Atmosphere")){
+  				image.hidden = false
+  				image.src = "../Wardrobe/05/normal05.png" 
+  			} if (5 > temp && temp >= 0 && (vejr == "Rain" || vejr == "Drizzle" || vejr == "Snow" || vejr == "Thunderstorm")){
+  				image.hidden = false
+  				image.src = "../Wardrobe/05/regn05.png" 
+
+
+  			} if (temp < 0 && vejr == "Clear"){
+  				image.hidden = false
+  				image.src = "../Wardrobe/0/sol0.png" 
+  			} if (temp < 0 && (vejr == "Clouds" || vejr == "Atmosphere")){
+  				image.hidden = false
+  				image.src = "../Wardrobe/0/normal0.png" 
+  			} if (temp < 0 && (vejr == "Rain" || vejr == "Drizzle" || vejr == "Snow" || vejr == "Thunderstorm")){
+  				image.hidden = false
+  				image.src = "../Wardrobe/0/regn0.png" 
+  			} 
+
+
+         if(vejr == "Rain"){
+         	makeItRain();
+         }
+
+         if(vejr == "Snow"){
+         	let background = document.getElementById("canvas")
+         	canvas.style.background="#0712b0"
+         	makeItSnow()
+         	
+         }
+
+         if(vejr == "Thunderstorm"){
+         	let background2 = document.getElementById("canvas")
+          canvas.style.background2="black"
+          render();
+         }
+         
+       
+       	} catch (error) {
+          console.log('Fejl: ', error);
+          const weatherInfo = document.getElementById('weather-info');
+          weatherInfo.innerHTML = 'Could not find the city you entered. Please enter a new city or check the spelling on your current city.';
+    	}
+    }
+
+
+</script>
+
+</div>
+<canvas id="canvas" hidden = true></canvas>
+</body>
+</html>
