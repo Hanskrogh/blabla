@@ -12,13 +12,11 @@
 			<h1>🌤WEATHER WARDROBE🌤<h1>
 		</header>
 
-
 		<div class="flex outer-container">
-
 			<div id="weather-info" class="weather-info">
 				<form onsubmit="onSubmit(event)">
-				<label for="city">Where do you want to see the weather:</label>
-	
+					<label for="city">Where do you want to see the weather:</label>
+
 					<input type="text" id="city" placeholder="Your city">
 					<button type="submit">Get weather</button>
 				</form>   
@@ -113,85 +111,181 @@
 	
 			
 				   
-				  let image = document.getElementById("frame")
+				let image = document.getElementById("frame")
 				let vejr = data.weather[0].main
 	
-				 if (temp >= 25 && vejr == "Clear") {
-					 image.hidden = false
-					  image.src = "../Wardrobe/25+/sol25+.png"
-				  } if (temp >= 25 && (vejr == "Clouds" || vejr == "Atomsphere")){
-					  image.hidden = false
-					  image.src = "../Wardrobe/25+/normal25+.png"
-				  } if (temp >= 25 && (vejr == "Rain" || vejr == "Drizzle" || vejr == "Snow" || vejr == "Thunderstorm")){
-					  image.hidden = false
-					  image.src = "../Wardrobe/25+/regn25+.png"
-	
-	
-				  } if (25 > temp && temp >= 20 && vejr == "Clear"){
-					  image.hidden = false
-					  image.src = "../Wardrobe/2025/sol2025.png"
-				  } if (25 > temp && temp >= 20 && (vejr == "Clouds" || vejr == "Atmosphere")){
-					  image.hidden = false
-					  image.src = "../Wardrobe/2025/normal2025.png"
-				  } if (25 > temp && temp >= 20 && (vejr == "Rain" || vejr == "Drizzle" || vejr == "Snow" || vejr == "Thunderstorm")){
-					  image.hidden = false
-					  image.src = "../Wardrobe/2025/regn2025.png"
+				if (temp >= 25) {
+					switch (vejr) {
+						case "Clear":
+							image.hidden = false
+							image.src = "../Wardrobe/25+/sol25+.png"
+							break;
+
+						case "Clouds":
+						case "Atmosphere":
+							image.hidden = false
+							image.src = "../Wardrobe/25+/normal25+.png"
+							break;
+
+						case "Rain":
+						case "Drizzle":
+						case "Snow":
+						case "Thunderstorm":
+							image.hidden = false
+							image.src = "../Wardrobe/25+/regn25+.png"
+							break;
+					}
+				}
+
+				if (temp < 25 && temp >= 20) { 
+					switch (vejr) {
+						case "Clear":
+							image.hidden = false
+							image.src = "../Wardrobe/2025/sol2025.png"
+							break;
+
+						case "Clouds":
+						case "Atmosphere":
+							image.hidden = false
+							image.src = "../Wardrobe/2025/normal2025.png"
+							break;
+
+						case "Rain":
+						case "Drizzle":
+						case "Snow":
+						case "Thunderstorm":
+							image.hidden = false
+							image.src = "../Wardrobe/2025/regn2025.png"
+							break;
+					}
+				}
+
+				if (20 > temp && temp >= 15) {
+					switch (vejr) {
+						case "Clear":
+							image.hidden = false
+							image.src = "../Wardrobe/1520/sol1520.png"
+							break;
+						case "Clouds":
+						case "Atmosphere":
+							image.hidden = false
+							image.src = "../Wardrobe/1520/normal1520.png"
+							break;
+						case "Rain":
+						case "Drizzle":
+						case "Snow":
+						case "Thunderstorm":
+							image.hidden = false
+							image.src = "../Wardrobe/1520/regn1520.png"
+							break;
+					}
+				}
 				  
-	
-				  } if (20 > temp && temp >= 15 && vejr =="Clear"){
-					  image.hidden = false
-					  image.src = "../Wardrobe/1520/sol1520.png"
-				  } if (20 > temp && temp >= 15 && (vejr == "Clouds" || vejr == "Atmosphere")){
-					  image.hidden = false
-					  image.src = "../Wardrobe/1520/normal1520.png" 
-				  } if (20 > temp && temp >= 15 && (vejr == "Rain" || vejr == "Drizzle" || vejr == "Snow" || vejr == "Thunderstorm")){
-					  image.hidden = false
-					  image.src = "../Wardrobe/1520/regn1520.png" 
+			
+				if (15 > temp && temp >= 10) { 
+					switch (vejr) {
+						case "Clear":
+							image.hidden = false
+							image.src = "../Wardrobe/1015/sol1015.png"
+							break;
+
+						case "Clouds":
+						case "Atmosphere":
+							image.hidden = false
+							image.src = "../Wardrobe/1015/normal1015.png"
+							break;
+
+						case "Rain":
+						case "Drizzle":
+						case "Snow":
+						case "Thunderstorm":
+							image.hidden = false
+							image.src = "../Wardrobe/1015/regn1015.png"
+							break;
+					}
+				}
 				  
-	
-				  } if (15 > temp && temp >= 10 && vejr == "Clear"){
-					  image.hidden = false
-					  image.src = "../Wardrobe/1015/sol1015.png" 
-				  } if (15 > temp && temp >= 10 && (vejr == "Clouds" || vejr == "Atmosphere")){
-					  image.hidden = false
-					  image.src = "../Wardrobe/1015/normal1015.png" 
-				  } if (15 > temp && temp >= 10 && (vejr == "Rain" || vejr == "Drizzle" || vejr == "Snow" || vejr == "Thunderstorm")){
-					  image.hidden = false
-					  image.src = "../Wardrobe/1015/regn1015.png" 
-				  
-	
-				  } if (10 > temp && temp >= 5 && vejr == "Clear"){
-					  image.hidden = false
-					  image.src = "../Wardrobe/510/sol510.png" 
-				  } if (10 > temp && temp >= 5 && (vejr == "Clouds" || vejr == "Atmosphere")){
-					  image.hidden = false
-					  image.src = "../Wardrobe/510/normal510.png" 
-				  } if (10 > temp && temp >= 5 && (vejr == "Rain" || vejr == "Drizzle" || vejr == "Snow" || vejr == "Thunderstorm")){
-					  image.hidden = false
-					  image.src = "../Wardrobe/510/regn510.png" 
-				  
-	
-				  } if (5 > temp && temp >= 0 && vejr == "Clear"){
-					  image.hidden = false
-					  image.src = "../Wardrobe/05/sol05.png" 
-				  } if (5 > temp && temp >= 0 && (vejr == "Clouds" || vejr == "Atmosphere")){
-					  image.hidden = false
-					  image.src = "../Wardrobe/05/normal05.png" 
-				  } if (5 > temp && temp >= 0 && (vejr == "Rain" || vejr == "Drizzle" || vejr == "Snow" || vejr == "Thunderstorm")){
-					  image.hidden = false
-					  image.src = "../Wardrobe/05/regn05.png" 
-	
-	
-				  } if (temp < 0 && vejr == "Clear"){
-					  image.hidden = false
-					  image.src = "../Wardrobe/0/sol0.png" 
-				  } if (temp < 0 && (vejr == "Clouds" || vejr == "Atmosphere")){
-					  image.hidden = false
-					  image.src = "../Wardrobe/0/normal0.png" 
-				  } if (temp < 0 && (vejr == "Rain" || vejr == "Drizzle" || vejr == "Snow" || vejr == "Thunderstorm")){
-					  image.hidden = false
-					  image.src = "../Wardrobe/0/regn0.png" 
-				  } 
+				 
+				 
+				//   if (10 > temp && temp >= 5 && vejr == "Clear"){
+				// 	  image.hidden = false
+				// 	  image.src = "../Wardrobe/510/sol510.png" 
+				//   } if (10 > temp && temp >= 5 && (vejr == "Clouds" || vejr == "Atmosphere")){
+				// 	  image.hidden = false
+				// 	  image.src = "../Wardrobe/510/normal510.png" 
+				//   } if (10 > temp && temp >= 5 && (vejr == "Rain" || vejr == "Drizzle" || vejr == "Snow" || vejr == "Thunderstorm")){
+				// 	  image.hidden = false
+				// 	  image.src = "../Wardrobe/510/regn510.png" 
+				//   } 
+
+				  if (10 > temp && temp >= 5) {
+					switch (vejr) {
+						case "Clear":
+							image.hidden = false
+							image.src = "../Wardrobe/510/sol510.png"
+							break;
+						
+						case "Clouds":
+						case "Atmosphere":
+							image.hidden = false
+							image.src = "../Wardrobe/510/normal510.png"
+							break;
+
+						case "Rain":
+						case "Drizzle":
+						case "Snow":
+						case "Thunderstorm":
+							image.hidden = false
+							image.src = "../Wardrobe/510/regn510.png"
+							break;
+					}
+				}
+
+				if (5 > temp && temp >= 0) {
+					switch (vejr) {
+						case "Clear":
+							image.hidden = false
+							image.src = "../Wardrobe/05/sol05.png"
+							break;
+
+						case "Clouds":
+						case "Atmosphere":
+							image.hidden = false
+							image.src = "../Wardrobe/05/normal05.png"
+							break;
+
+						case "Rain":
+						case "Drizzle":
+						case "Snow":
+						case "Thunderstorm":
+							image.hidden = false
+							image.src = "../Wardrobe/05/regn05.png"
+							break;
+					}
+				}
+
+				if (temp < 0) {
+					switch (vejr) {
+						case "Clear":
+							image.hidden = false
+							image.src = "../Wardrobe/0/sol0.png"
+							break;
+
+						case "Clouds":
+						case "Atmosphere":
+							image.hidden = false
+							image.src = "../Wardrobe/0/normal0.png"
+							break;
+
+						case "Rain":
+						case "Drizzle":
+						case "Snow":
+						case "Thunderstorm":
+							image.hidden = false
+							image.src = "../Wardrobe/0/regn0.png"
+							break;
+					}
+				}
 	
 	
 			 if(vejr == "Rain"){
