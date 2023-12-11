@@ -15,12 +15,17 @@
 	<img id="frame" hidden = true>
     <div id="weather-info" class="weather-info">
     
-   
+<form onsubmit="onSubmit(event)">
 <label for="city">Where do you want to see the weather:</label>
-    <input type="text" id="city" placeholder="Your city">
-    <button onclick="getWeather()">Get weather</button>
 
+    <input type="text" id="city" placeholder="Your city">
+    <button type="submit">Get weather</button>
+</form>   
     <script>
+		function onSubmit(e) {
+			e.preventDefault();
+			getWeather();
+		}
       async function getWeather() {
         const apiKey = '86356df12d4d962bf277fb6c08bf6ce3'; 
         const city = document.getElementById('city').value;
