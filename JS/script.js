@@ -137,19 +137,19 @@ setInterval(draw, 30);
 
 //LYN
 function render() { 
-  var size = 500;
+  
   var canvas = document.getElementById("canvas");
   canvas.width = window.innerWidth;
   canvas.height = window.innerHeight;
   canvas.hidden = false
   var ctx = canvas.getContext("2d");
 
-  var center = {x: size / 2, y: 20};
+  var center = {x: window.innerWidth / 2, y: 20};
   var minSegmentHeight = 5;
-  var groundHeight = size - 20;
+  var groundHeight = window.innerHeight - 20;
   var color = "hsl(180, 80%, 80%)";
   var roughness = 2;
-  var maxDifference = size / 5;
+  var maxDifference = window.innerHeight / 5;
 
   ctx.globalCompositeOperation = "lighter";
 
@@ -157,19 +157,19 @@ function render() {
   ctx.shadowColor = color;
 
   ctx.fillStyle = color;
-  ctx.fillRect(0, 0, size, size);
+  ctx.fillRect(0, 0, window.innerWidth, window.innerHeight);
   ctx.fillStyle = "hsla(0, 0%, 10%, 0.2)";
 
   ctx.shadowBlur = 0;
   ctx.globalCompositeOperation = "source-over";
-  ctx.fillRect(0, 0, size, size);
+  ctx.fillRect(0, 0, window.innerWidth, window.innerHeight);
   ctx.globalCompositeOperation = "lighter";
   ctx.shadowBlur = 15;
   function createLightning() {
     var segmentHeight = groundHeight - center.y;
     var lightning = [];
     lightning.push({x: center.x, y: center.y});
-    lightning.push({x: Math.random() * (size - 200) + 50, y: groundHeight + (Math.random() - 0.9) * 50});
+    lightning.push({x: Math.random() * (window.innerHeight - 200) + 50, y: groundHeight + (Math.random() - 0.9) * 50});
     var currDiff = maxDifference;
     while (segmentHeight > minSegmentHeight) {
       var newSegments = [];
