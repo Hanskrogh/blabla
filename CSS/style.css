@@ -6,6 +6,8 @@ body {
   font-family: American Typewriter, sans-serif;
 }
 
+
+
 canvas { /*REGN*/
   position: fixed;
   background: #738293;
@@ -44,3 +46,28 @@ img {
   	left: 10 px;
 }
 
+
+.sun {
+  position: fixed;
+  z-index: -1;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background-image: repeating-conic-gradient(
+      from 0 at 100% 100%,
+      rgba(255, 255, 255, 0.7) 0% 2deg,
+      transparent 0 9deg
+    ),
+    radial-gradient(
+      circle 150px at 100% 100%,
+      white,
+      yellow,
+      lightyellow,
+      rgba(46, 181, 229, 0.8)
+    );
+  background-color: #2eb5e5;
+  background-position: 100% 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+}

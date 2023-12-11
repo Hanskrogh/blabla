@@ -14,7 +14,7 @@
 	</header>
 	<img id="frame" hidden = true>
     <div id="weather-info" class="weather-info">
-    
+
 <form onsubmit="onSubmit(event)">
 <label for="city">Where do you want to see the weather:</label>
 
@@ -22,6 +22,9 @@
     <button type="submit">Get weather</button>
 </form>   
     <script>
+		document.querySelector(".sun").style.display = "none";
+
+
 		function onSubmit(e) {
 			e.preventDefault();
 			getWeather();
@@ -29,6 +32,7 @@
       async function getWeather() {
         const apiKey = '86356df12d4d962bf277fb6c08bf6ce3'; 
         const city = document.getElementById('city').value;
+		document.querySelector(".sun").style.display = "none";
 
         const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
 
@@ -145,6 +149,10 @@
           canvas.style.background2="black"
           render();
          }
+
+		 if (vejr == "Clear") {
+			document.querySelector(".sun").style.display = "block"
+		 }
          
        
        	} catch (error) {
@@ -159,5 +167,7 @@
 
 </div>
 <canvas id="canvas" hidden = true></canvas>
+<div class="sun" style="display: none;"></div>
+
 </body>
 </html>
